@@ -112,11 +112,11 @@
 
     app.logout = function () {
         window.localStorage.removeItem('user');
-        var url = window.location;
+        var url = window.location.href;
         if (url.substr(-1) != '/') {
             url = url + '/';
         }
-        window.location = url;
+        window.location.href = url;
     };
 
     app.updateOnlineStatus = function () {
