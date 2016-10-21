@@ -1,1 +1,82 @@
-<h1>AAAAARGH</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regional Manager App</title>
+    <link rel="stylesheet" type="text/css" href="./styles/inline.css">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="canonical" href="https://vikkio88.github.io/">
+
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Weather PWA">
+    <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+
+    <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#2F3BA2">
+</head>
+<body>
+
+<div id="login-dialog" class="dialog-container">
+    <div class="dialog">
+        <div class="dialog-title">Login</div>
+        <div class="dialog-body">
+            <input type="text" id="username" placeholder="Username...">
+            <input type="password" id="password" placeholder="Password...">
+        </div>
+        <div class="dialog-buttons">
+            <button id="login-button" class="button">Login</button>
+        </div>
+    </div>
+</div>
+
+<header class="header">
+    <h1 class="header__title">Regional Manager</h1>
+    <button id="butNotifications" class="headerButton butNotificationsIcon" aria-label="Notifications"></button>
+    <button id="butAdd" class="headerButton" aria-label="Add"></button>
+    <button id="butLogout" class="headerButton" aria-label="Logout">Logout</button>
+</header>
+
+<main class="main">
+    <div class="card cardTemplate weather-forecast" hidden>
+        <div class="city-key" hidden></div>
+        <div class="location"></div>
+        <div class="date"></div>
+        <div class="current">
+            <div class="visual">
+            </div>
+        </div>
+    </div>
+</main>
+
+<div id="addDialog" class="dialog-container">
+    <div class="dialog">
+        <div class="dialog-title">Add new note</div>
+        <div class="dialog-body">
+            <form>
+                <input type="text" placeholder="Title..." id="noteTitle"><br >
+                <textarea rows="8" cols="30" placeholder="Note Body..." id="noteBody"></textarea>
+            </form>
+        </div>
+        <div class="dialog-buttons">
+            <button id="butAddNote" class="button">Add</button>
+            <button id="butAddCancel" class="button">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div class="loader">
+    <svg viewBox="0 0 32 32" width="32" height="32">
+        <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+    </svg>
+</div>
+
+<div id="status"></div>
+
+<script src="./scripts/app.js" async></script>
+
+</body>
+</html>
