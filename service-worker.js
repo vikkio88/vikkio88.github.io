@@ -9,6 +9,7 @@ var filesToCache = [
     './images/ic_logout_white_24px.svg',
     './images/ic_notifications_white_24px.svg',
     './images/ic_cross_white_24px.svg',
+    './images/ic_delete_white_24px.svg',
     './images/ic_refresh_white_24px.svg'
 ];
 
