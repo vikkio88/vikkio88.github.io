@@ -8,6 +8,8 @@
         time: 1453489481
     };
 
+    var notesUpdatedEvent = new Event("updatednotes");
+
     var app = {
         hasRequestPending: false,
         isLoading: true,
@@ -38,6 +40,11 @@
     });
     window.addEventListener('offline', function () {
         app.updateOnlineStatus()
+    });
+
+    document.addEventListener('updatednotes', function () {
+        console.log("updated notes event");
+        app.renderCachedNotes();
     });
 
     document.getElementById('login-button').addEventListener('click', function () {
@@ -105,7 +112,11 @@
 
     app.logout = function () {
         window.localStorage.removeItem('user');
-        window.location = window.location;
+        var url = window.location;
+        if (url.substr(-1) != '/') {
+            url = url + '/';
+        }
+        window.location = url;
     };
 
     app.updateOnlineStatus = function () {
@@ -249,6 +260,7 @@
         var cachedNotes = JSON.stringify(app.cachedNotes);
         // IMPORTANT: See notes about use of localStorage.
         localStorage.cachedNotes = cachedNotes;
+        document.dispatchEvent(notesUpdatedEvent);
     };
 
     /************************************************************************

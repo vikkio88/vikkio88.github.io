@@ -1,8 +1,8 @@
-var dataCacheName = 'weatherData-v7';
 var cacheName = 'weatherPWA-step-7-1';
 var filesToCache = [
     './',
     './index.html',
+    './manifest.json',
     './scripts/app.js',
     './styles/inline.css',
     './images/ic_add_white_24px.svg',
@@ -109,19 +109,4 @@ self.addEventListener('push', function(event) {
 
 self.addEventListener('sync', function(event) {
     console.info('Event: Sync');
-
-    //Check registered sync name or emulated sync from devTools
-    if (event.tag === 'github' || event.tag === 'test-tag-from-devtools') {
-        event.waitUntil(
-            //To check all opened tabs and send postMessage to those tabs
-            self.clients.matchAll().then(function (all) {
-                return all.map(function (client) {
-                    return client.postMessage('online'); //To make fetch request, check app.js - line no: 122
-                })
-            })
-                .catch(function (error) {
-                    console.error(error);
-                })
-        );
-    }
 });
